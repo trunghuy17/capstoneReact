@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -9,53 +10,83 @@ export default function Footer() {
             <div className="item col-4">
               <h5>GET HELP</h5>
               <div className="item-body">
-                <a href="#">Contanct</a>
-                <a href="#">Shopping</a>
-                <a href="#">NIKEiD</a>
-                <a href="#">Nike+</a>
+                <ul>
+                  <li>
+                    <NavLink className="nav-link" to="/">
+                      Home
+                    </NavLink>
+                  </li>
+
+                  <li>
+                    <NavLink className="nav-link" to="/">
+                      Nike
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink className="nav-link" to="/">
+                      Adidas
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink className="nav-link" to="/">
+                      Contact
+                    </NavLink>
+                  </li>
+                </ul>
               </div>
             </div>
-            <div className="item col-4 item-br">
-              <h5>ORDERS</h5>
+            <div className="item col-4 ">
+              <h5>SUPPORT</h5>
               <div className="item-body">
-                <a href="#">Payment options</a>
-                <a href="#">Shipping and delivery</a>
-                <a href="#">Returns</a>
+                <ul>
+                  <li>
+                    <NavLink className="nav-link" to="/">
+                      About
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink className="nav-link" to="/">
+                      Contact
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink className="nav-link" to="/">
+                      Help
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink className="nav-link" to="/">
+                      Phone
+                    </NavLink>
+                  </li>
+                </ul>
               </div>
             </div>
             <div className="item col-4">
               <h5>REGISTER</h5>
-              <p>
-                Createe one account to manage everything you do with Nike, from
-                your shopping preferences to your Nike+ activity.
-              </p>
-              <a className="style_red" href="#">
-                Learn more
-              </a>
+              <div className="item-body">
+                <ul>
+                  <li>
+                    <NavLink className="nav-link" to="/register">
+                      register
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink className="nav-link" to="/login">
+                      login
+                    </NavLink>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div className="footer_bottom">
-        <div className="container">
-          <div className="footer_list row">
-            <div className="item col-4">
-              <h5>EMAIL SIGN UP</h5>
-              <p>Be the first to know about new product and special offers.</p>
-              <a href="#">Sign up now</a>
-            </div>
-            <div className="item col-4 item-br">
-              <h5>GIFT CARDS</h5>
-              <p>Give the gift thar always fits.</p>
-              <a href="#">View cards</a>
-            </div>
-            <div className="item col-4">
-              <h5>STORES NEAR YOU</h5>
-              <p>Locate Nike retail store or authorized retailer.</p>
-              <a href="#">Search</a>
-            </div>
-          </div>
-        </div>
+        <p>
+          © 2022 Cybersoft All Rights Reserved | Design Theme by Trương Tấn
+          Khải.
+        </p>
       </div>
     </footer>
   );
