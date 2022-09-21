@@ -1,0 +1,34 @@
+/*
+    Các folder component và page tổ chức như react component folder 
+    Trong các file component.scss và page.scss thi  import variable
+    Trong file style sẽ import base ,component, page , template ...
+
+*/
+// Helpers: chứa những file variables, mixin, extend, function
+
+@import "./helpers/variable";
+@import "./helpers/mixin";
+// Vendors: Chứa file scss của những thư viện mà chúng ta sủ dụng
+
+
+// Base: Chứa những fil chỉnh sửa lại mặc định của trình duyeert hoặc của thư viện
+
+@import './base/base';
+
+// Component: Chứa những file phần tử nhỏ của trang web (button, ...)
+
+@import './component/header';
+@import './component/footer';
+
+//Layouts: Chứa những phần lớn dùng chung như (Header, fooer,... )
+
+//Pages: Chứa các style riêng của những page khác nhau :( home , login , detail...)
+@import './pages/home';
+@import './pages/login';
+@import './pages/register';
+@import './pages/carts';
+@import './pages/detial';
+@import './pages/search';
+@import './pages/profile';
+
+// Themes: Chứa những theme chủ đạo khác nhau của trang web 

@@ -1,0 +1,77 @@
+header {
+    .container-fluid {
+
+        .header_top {
+            background: #000;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            .logo {
+                margin: 10px 0px 8px 0px;
+                padding-left: 25px;
+
+                img {
+                    width: 116px;
+                    height: 32px;
+                }
+            }
+
+            .header_right {
+                .content {
+                    display: flex;
+                    justify-content: flex-end;
+                    margin-right: 40px;
+                    align-items: center;
+                    gap: 20px;
+
+                    .shop {
+                        i {
+                            color: white
+                        }
+
+                        span {
+                            @include text($fs-xl, $fw-3, $lh-36, $c-white);
+                        }
+                    }
+
+                    a {
+                        text-decoration: none;
+                        @include text($fs-s, $fw-3, $lh-19, $c-white);
+                    }
+                }
+            }
+        }
+
+        nav {
+            padding: 10px 0px 8px 25px;
+            gap: 25px;
+            background: $bg-white-f5;
+
+            .line1 {
+                position: relative;
+
+                &::before {
+                    content: '';
+                    width: 100%;
+                    height: 0;
+                    position: absolute;
+                    bottom: 0;
+                    background: #030303;
+                    border: 1px solid #000000;
+
+                }
+            }
+
+            .nav-link {
+
+                @include text($fs-m, $fw-4, $lh-24, $c-dark);
+            }
+
+            .nguoi {
+                opacity: 0.7;
+            }
+        }
+
+    }
+}
