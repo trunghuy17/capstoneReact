@@ -1,5 +1,10 @@
 import React from "react";
 
 export default function Login() {
-  return <div>Login</div>;
+  return (
+    <div className="container">
+      <h2>Login</h2>
+      <hr />
+    </div>
+  );
 }
