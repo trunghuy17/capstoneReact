@@ -1,5 +1,5 @@
 // text
-@mixin text ($fs: $fs-m, $fw: $fw-regular, $lh: $lh-2, $c: $text-c19-den) {
+@mixin text ($fs: $fs-m, $fw: $fw-3, $lh: $lh-24, $c: $c-dark) {
     font-size: $fs;
     font-weight: $fw;
     line-height: $lh;

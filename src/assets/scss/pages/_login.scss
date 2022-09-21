@@ -1,0 +1,70 @@
+.container {
+    h2 {
+        @include text ($fs-2xl, $fw-4, $lh-48, $c-dark)
+    }
+
+    form {
+        max-width: 800px;
+        margin: 0 auto;
+
+        .form-group {
+            p {
+                @include text ($fs-m, $fw-5, $lh-24, rgba(0, 0, 0, 0.6))
+            }
+
+            input {
+                background: $c-white;
+
+            }
+        }
+
+        #css_password {
+
+
+            input {
+                // background-color: aqua;
+                border-right: none;
+                background: $c-white;
+            }
+
+            span {
+                border-left: none;
+                background: $c-white;
+            }
+        }
+
+
+        .form-bottom {
+
+            div {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 200px;
+
+
+                p {
+                    margin: 20px 0;
+                    @include text ($fs-m, $fw-5, $lh-24, rgba(21, 42, 235, 0.8))
+                }
+
+                input {
+                    background: rgba(33, 33, 33, 0.08);
+                }
+
+                button {
+                    margin: 20px 0;
+
+                    @include button ($fs-m, $fw-4, $lh-24, $c-white, #6200EE, 16px 40px, none, 20px, $bg-pupble, $c-dark)
+                }
+
+
+            }
+
+            .facebook {
+                display: block;
+                text-align: center;
+            }
+        }
+    }
+}

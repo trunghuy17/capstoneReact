@@ -11,6 +11,10 @@ export default function Header() {
           </NavLink>
           <div className="header_right col-6">
             <div className="content ">
+              <NavLink to="/search">
+                <i className="fa fa-search"></i>
+                Search
+              </NavLink>
               <NavLink className="shop" to="/carts">
                 <i className="fa fa-cart-plus"></i>
                 <span>(1)</span>
@@ -21,7 +25,7 @@ export default function Header() {
           </div>
         </div>
         <nav className="nav">
-          <a className="nav-link active line1" href="#">
+          <a className="nav-link active line" href="#">
             Home
           </a>
           <a className="nav-link nguoi" href="#">

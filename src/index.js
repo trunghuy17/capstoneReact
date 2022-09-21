@@ -13,14 +13,17 @@ import HomeTemplate from './templates/HomeTemplate';
 // Cấu hình redux
 import { Provider } from 'react-redux';
 import { store } from './redux/configStore'
+import HomeMobile from './pages/Home/HomeMobile';
+import ResponsiveItem from './hoc/ResponsiveItem';
+import HomeTemplateMobile from './templates/HomeTemplateMobile';
 // Cấu hình react router dom
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
     <BrowserRouter>
       <Routes>
-        <Route path='' element={<HomeTemplate />}>
-          <Route index element={<Home />}></Route>
+        <Route path='' element={<ResponsiveItem component={HomeTemplate} componentMobile={HomeTemplateMobile} />}>
+          <Route index element={<ResponsiveItem component={Home} componentMobile={HomeMobile} />}></Route>
           <Route path='login' element={<Login />}></Route>
           <Route path='carts' element={<Carts />}></Route>
           <Route path='search' element={<Search />}></Route>

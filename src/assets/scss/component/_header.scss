@@ -31,13 +31,13 @@ header {
                         }
 
                         span {
-                            @include text($fs-xl, $fw-3, $lh-36, $c-white);
+                            @include text($fs-l, $fw-3, $lh-36, $c-white);
                         }
                     }
 
                     a {
                         text-decoration: none;
-                        @include text($fs-s, $fw-3, $lh-19, $c-white);
+                        @include text($fs-l, $fw-3, $lh-19, $c-white);
                     }
                 }
             }
