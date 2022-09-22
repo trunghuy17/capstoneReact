@@ -1,7 +1,19 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-export default function Header() {
+export default function Header(props) {
+  const { userLogin } = useSelector((state) => state.userReducer);
+  const renderNavLink = () => {
+    if (userLogin) {
+      return (
+        <NavLink className="nav--link" to="/profile">
+          {userLogin.email}
+        </NavLink>
+      );
+    }
+    return <NavLink to="/login">Login</NavLink>;
+  };
   return (
     <header>
       <div className="container-fluid">
@@ -19,7 +31,7 @@ export default function Header() {
                 <i className="fa fa-cart-plus"></i>
                 <span>(1)</span>
               </NavLink>
-              <NavLink to="/login">Login</NavLink>
+              {renderNavLink()}
               <NavLink to="register">Register</NavLink>
             </div>
           </div>

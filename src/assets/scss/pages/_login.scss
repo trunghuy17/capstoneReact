@@ -1,6 +1,12 @@
 .container {
+    margin-top: 60px;
+
     h2 {
         @include text ($fs-2xl, $fw-4, $lh-48, $c-dark)
+    }
+
+    hr {
+        margin: 40px 0;
     }
 
     form {
@@ -15,6 +21,11 @@
             input {
                 background: $c-white;
 
+            }
+
+            .error_text {
+
+                @include text ($fs-m, $fw-5, $lh-24, RED)
             }
         }
 
@@ -43,7 +54,7 @@
                 gap: 200px;
 
 
-                p {
+                a {
                     margin: 20px 0;
                     @include text ($fs-m, $fw-5, $lh-24, rgba(21, 42, 235, 0.8))
                 }
@@ -54,8 +65,14 @@
 
                 button {
                     margin: 20px 0;
+                    gap: 10px;
+                    @include button ($fs-m, $fw-4, $lh-24, $c-white, #6200EE, 16px 40px, none, 20px, $bg-pupble, $c-dark);
 
-                    @include button ($fs-m, $fw-4, $lh-24, $c-white, #6200EE, 16px 40px, none, 20px, $bg-pupble, $c-dark)
+
+
+                    span {
+                        margin-left: 10px;
+                    }
                 }
 
 
