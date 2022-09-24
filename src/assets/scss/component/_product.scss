@@ -1,0 +1,49 @@
+.card {
+    max-height: 600px;
+
+    img {
+        position: relative;
+    }
+
+    .feature {
+        position: absolute;
+        top: 30px;
+        right: 50px;
+        font-size: 30px;
+        color: rgba(0, 0, 0, 0.1);
+    }
+
+    .feature_like {
+        position: absolute;
+        top: 30px;
+        right: 50px;
+        font-size: 30px;
+        color: red;
+    }
+
+    .card-body {
+        h3 {}
+
+        p {}
+
+        div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: $bg-gray-c;
+
+            button {
+                width: 50%;
+                @include button($fs-l, $fw-4, $lh-29, $c-dark, $bg-yew, 10px, none, none, $bg-gray-c, $c-dark);
+            }
+
+            p {
+                margin: 0;
+                width: 50%;
+                text-align: center;
+                @include text($fs-l, $fw-6, $lh-29, $c-dark);
+
+            }
+        }
+    }
+}
