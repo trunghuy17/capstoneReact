@@ -17,7 +17,7 @@ export default function Product({ product }) {
         <p>{product.shortDescription}</p>
         <div>
           <button>Buy now</button>
-          <p>{product.price}</p>
+          <p>{product.price}$</p>
         </div>
       </div>
     </div>

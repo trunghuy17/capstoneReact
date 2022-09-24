@@ -22,9 +22,13 @@
     }
 
     .card-body {
-        h3 {}
+        h3 {
+            @include text($fs-l, $fw-3, $lh-29, $c-dark)
+        }
 
-        p {}
+        p {
+            @include text($fs-m, $fw-3, $lh-24, $c-gray-cb)
+        }
 
         div {
             display: flex;
@@ -34,7 +38,7 @@
 
             button {
                 width: 50%;
-                @include button($fs-l, $fw-4, $lh-29, $c-dark, $bg-yew, 10px, none, none, $bg-gray-c, $c-dark);
+                @include button($fs-l, $fw-4, $lh-29, $c-dark, $bg-yew, 10px, none, none, $c-white, $c-dark);
             }
 
             p {

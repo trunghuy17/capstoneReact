@@ -1,0 +1,39 @@
+.container {
+    // position: relative;
+
+    form {
+        max-width: 1280px;
+        margin: 20px 0;
+
+        p {
+            @include text ($fs-s, $fw-5, $lh-24, rgba(0, 0, 0, 0.6))
+        }
+
+        div {
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+
+
+            input {
+                padding: 16px 12px 14px 14px;
+                width: 443px;
+                background: $bg-gray-c  !important;
+            }
+
+            button {
+                @include button($fs-s, $fw-5, $lh-19, $c-white, $bg-yew, 10px 25px, none, 50px, $c-white, $c-dark)
+            }
+        }
+
+
+    }
+
+    h2 {
+        background: linear-gradient(180deg, #F21299 0%, #1B02B5 100%);
+        @include text ($fs-2xl, $fw-4, $lh-48, $c-white);
+        width: 100%;
+        // position: absolute;
+    }
+
+}
