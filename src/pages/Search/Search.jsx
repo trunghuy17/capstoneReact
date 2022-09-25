@@ -58,7 +58,7 @@ export default function Search() {
   };
 
   return (
-    <div className="container">
+    <div className="container search">
       <form className="search " onSubmit={handleSubmit}>
         <p>Search</p>
         <div className="form-group ">
@@ -80,6 +80,7 @@ export default function Search() {
           id="sortByPrice"
           onChange={handleChange}
         >
+          <option value="">Change Option</option>
           <option value="decrease">decrease</option>
           <option value="ascending">ascending</option>
         </select>

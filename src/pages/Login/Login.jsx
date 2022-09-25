@@ -31,7 +31,7 @@ export default function Login(props) {
     },
   });
   return (
-    <div className="container">
+    <div className="container login">
       <h2>Login</h2>
       <hr />
       <form onSubmit={formik.handleSubmit}>
