@@ -18,7 +18,8 @@ const searchProductReducer = createSlice({
   },
 });
 
-export const { setArrProductAction } = searchProductReducer.actions;
+export const { setArrProductAction, setArrProductBySort } =
+  searchProductReducer.actions;
 
 export default searchProductReducer.reducer;
 
@@ -39,10 +40,10 @@ export const getProductByKeywordApi = (searchParams) => {
   };
 };
 
-export const setArrProductBySort = () => {
-  return (dispatch) => {
-    const action = setArrProductBySort();
-    console.log(action);
-    dispatch(action);
-  };
-};
+// export const setArrProductBySort = () => {
+//   return (dispatch) => {
+//     const action = setArrProductBySort();
+//     console.log(action);
+//     dispatch(action);
+//   };
+// };

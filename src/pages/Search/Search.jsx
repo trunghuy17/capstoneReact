@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import { useSearchParams } from "react-router-dom";
-import _ from "lodash";
+import _, { isBuffer } from "lodash";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getProductByKeywordApi,
@@ -28,7 +28,6 @@ export default function Search() {
     [searchParams.get("keyword")],
     []
   );
-  useEffect(() => {});
   const handleChange = (e) => {
     if (typingTimeoutRef.current) {
       clearTimeout(typingTimeoutRef.current);
@@ -36,10 +35,17 @@ export default function Search() {
     typingTimeoutRef.current = setTimeout(() => {
       const value = e.target.value;
       console.log(value);
+      //Sort theo price tăng dần
       if (value === "ascending") {
         //ascending: tăng dần
         const arrNewProduct = _.sortBy(arrProduct, ["price"]);
-        arrProduct = arrNewProduct;
+        const action = setArrProductBySort(arrNewProduct);
+        dispatch(action);
+        //Đảo mảng tăng dần thành giảm dần
+      } else if (value === "decrease") {
+        const arrNewProduct = _.sortBy(arrProduct, ["price"]).reverse();
+        const action = setArrProductBySort(arrNewProduct);
+        dispatch(action);
       } else {
         setSearchParams({
           keyword: value,
@@ -50,17 +56,7 @@ export default function Search() {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-  // Hàm xử lý sortByPrice
-  let sortByPrice = () => {
-    let value = document.querySelector("#sortByPrice")?.value;
-    console.log(value);
-    if (value === "ascending") {
-      //ascending: tăng dần
-      const arrNewProduct = _.sortBy(arrProduct, ["price"]);
-      const action = setArrProductBySort;
-      dispatch(action);
-    }
-  };
+
   return (
     <div className="container">
       <form className="search " onSubmit={handleSubmit}>
@@ -91,7 +87,7 @@ export default function Search() {
       <div className="row">
         {arrProduct?.map((prod, index) => {
           return (
-            <div className="col-sm-12 col-lg-5 mt-4" key={index}>
+            <div className="col-sm-6 col-lg-3 mt-4" key={index}>
               <Product product={prod} />
             </div>
           );
