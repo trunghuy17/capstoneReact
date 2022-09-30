@@ -1,9 +1,11 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 export default function Header(props) {
   const { userLogin } = useSelector((state) => state.userReducer);
+  const { gioHang } = useSelector((state) => state.cartReducer);
+  const dispatch = useDispatch();
   const renderNavLink = () => {
     if (userLogin) {
       return (
@@ -14,12 +16,23 @@ export default function Header(props) {
     }
     return <NavLink to="/login">Login</NavLink>;
   };
+  const tongSoLuong = () => {
+    console.log({ gioHang });
+    return gioHang.reduce((tsl, sp, index) => {
+      return (tsl += sp.quantity);
+    }, 0);
+  };
+
   return (
     <header>
       <div className="container-fluid">
         <div className="header_top row">
           <NavLink to="/" className="logo col-6">
-            <img src="./img/image 3.svg" alt />
+            <img
+              src="./img/image 3.svg
+            "
+              alt="..."
+            />
           </NavLink>
           <div className="header_right col-6">
             <div className="content ">
@@ -29,7 +42,7 @@ export default function Header(props) {
               </NavLink>
               <NavLink className="shop" to="/carts">
                 <i className="fa fa-cart-plus"></i>
-                <span>(1)</span>
+                <span>({tongSoLuong()})</span>
               </NavLink>
               {renderNavLink()}
               <NavLink to="register">Register</NavLink>

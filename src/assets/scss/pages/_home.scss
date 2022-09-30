@@ -1,0 +1,60 @@
+.home {
+    #carouselExampleControls {
+        height: 530px;
+        width: 100%;
+
+        .carousel-inner {
+            height: 530px;
+
+            .carousel-item {
+
+                .row {
+                    justify-content: center;
+                    align-items: center;
+                    height: 530px;
+
+                    .col-8 {
+                        height: 530px;
+                        text-align: right;
+
+                        img {
+                            width: 689px;
+                            text-align: center;
+                        }
+                    }
+
+                    .tital {
+                        padding: 0 20px;
+
+                        .tital_Name {
+                            @include text ($fs-2xl, $fw-3, $lh-48, $c-dark);
+                        }
+
+                        .titail_desc {
+                            @include text ($fs-l, $fw-3, $lh-24, $c-dark);
+
+                        }
+
+                        a {
+                            @include button($fs-l, $fw-4, $lh-29, $c-dark, $bg-yew, 10px, 1px solid, none, $c-white, $c-dark);
+
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+    .feature-home {
+        padding: 50px 0;
+
+        h2 {
+            background: linear-gradient(180deg, #F21299 0%, #1B02B5 100%);
+            @include text ($fs-2xl, $fw-4, $lh-48, $c-white);
+            width: 700px;
+            text-align: left;
+            padding: 0 20px;
+        }
+    }
+}

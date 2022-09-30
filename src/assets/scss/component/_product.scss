@@ -36,7 +36,7 @@
             align-items: center;
             background-color: $bg-gray-c;
 
-            button {
+            a {
                 width: 50%;
                 @include button($fs-l, $fw-4, $lh-29, $c-dark, $bg-yew, 10px, none, none, $c-white, $c-dark);
             }

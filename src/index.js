@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, createBrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './assets/scss/style.scss';
 import Carts from './pages/Carts/Carts';
 import Detail from './pages/Detail/Detail';
@@ -17,10 +17,16 @@ import HomeMobile from './pages/Home/HomeMobile';
 import ResponsiveItem from './hoc/ResponsiveItem';
 import HomeTemplateMobile from './templates/HomeTemplateMobile';
 // Cấu hình react router dom
+
+// Tạo ra 1 biến quản lý chuyển hướng trang
+import { createBrowserHistory } from 'history';
+import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
+import DemoModal from './hoc/DemoModal';
+export const history = createBrowserHistory();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <HistoryRouter history={history}>
       <Routes>
         <Route path='' element={<ResponsiveItem component={HomeTemplate} componentMobile={HomeTemplateMobile} />}>
           <Route index element={<ResponsiveItem component={Home} componentMobile={HomeMobile} />}></Route>
@@ -33,10 +39,11 @@ root.render(
             <Route path=':id' element={<Detail />}></Route>
           </Route>
           <Route path='*' element={<Navigate to='' />}></Route>
+          <Route path='demodal' element={<DemoModal />}></Route>
 
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
   </Provider>
 );
 

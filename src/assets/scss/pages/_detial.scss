@@ -1,0 +1,101 @@
+.detail {
+    padding: 60px 0;
+
+    .row {
+        justify-content: space-around;
+        align-items: center;
+
+        .product_img {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+            img {
+                transition: transform 0.3s;
+
+                &:hover {
+                    transform: scale(130%);
+                }
+            }
+        }
+
+        .product_title {
+            h1 {
+                @include text($fs-xl, $fw-3, $lh-36, $c-dark);
+            }
+
+            p {
+                @include text($fs-s, $fw-4, $lh-19, $c-dark);
+            }
+
+            h3 {
+                @include text($fs-l, $fw-5, $lh-29, $c-1e);
+            }
+
+            #btn {
+                button {
+                    margin-right: 20px;
+                    @include button($fs-l,
+                        $fw-6,
+                        $lh-29,
+                        $c-dark,
+                        $bg-gray-c,
+                        10px,
+                        none,
+                        none,
+                        $bg-gray-c,
+                        $c-dark );
+                }
+            }
+
+            h4 {
+                padding: 10px 0 5px 0px;
+                @include text($fs-xl, $fw-6, $lh-36, $c-red);
+            }
+
+            .so_luong {
+                margin-bottom: 10px;
+
+                button {
+                    @include button($fs-l,
+                        $fw-6,
+                        $lh-29,
+                        $c-dark,
+                        $bg-blue,
+                        10px 20px,
+                        none,
+                        none,
+                        $bg-pupble,
+                        $c-dark );
+                }
+
+                span {
+                    @include text($fs-xl, $fw-4, $lh-36, $c-dark);
+                }
+            }
+
+            button {
+                @include button($fs-l,
+                    $fw-5,
+                    $lh-29,
+                    $c-white,
+                    $bg-pupble,
+                    10px 20px,
+                    none,
+                    none,
+                    rgba(62, 32, 248, 0.9),
+                    $c-white );
+            }
+        }
+    }
+
+    .realate-product {
+        h3 {
+            padding: 20px 0 50px 0;
+            @include text ($fs-2xl, $fw-4, $lh-48, $c-dark);
+            text-align: center;
+        }
+    }
+}

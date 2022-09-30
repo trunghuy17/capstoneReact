@@ -1,5 +1,5 @@
 import React from "react";
-
+import { NavLink } from "react-router-dom";
 export default function Product({ product }) {
   const renderFeature = () => {
     const value = product?.feature;
@@ -16,7 +16,7 @@ export default function Product({ product }) {
         <h3>{product.name}</h3>
         <p>{product.shortDescription}</p>
         <div>
-          <button>Buy now</button>
+          <NavLink to={`/detail/${product.id}`}>Buy now</NavLink>
           <p>{product.price}$</p>
         </div>
       </div>
