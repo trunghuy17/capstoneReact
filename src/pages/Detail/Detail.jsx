@@ -56,11 +56,11 @@ export default function Detail() {
         </div>
       </div>
       <div className="realate-product">
-        <h3>-Realate Product -</h3>
+        <h2>-Realate Product -</h2>
         <div className="row">
           {productDetail?.relatedProducts?.map((prod, index) => {
             return (
-              <div className="col-3" key={index}>
+              <div className="col-4 mt-3" key={index}>
                 <Product product={prod} />
               </div>
             );
