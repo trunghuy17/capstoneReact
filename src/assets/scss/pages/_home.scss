@@ -1,10 +1,10 @@
 .home {
     #carouselExampleControls {
         height: 530px;
-        width: 100%;
+        // width: 100%;
 
         .carousel-inner {
-            height: 530px;
+            // height: 530px;
 
             .carousel-item {
 
@@ -13,7 +13,7 @@
                     align-items: center;
                     height: 530px;
 
-                    .col-8 {
+                    .col-6 {
                         height: 530px;
                         text-align: right;
 
@@ -24,20 +24,27 @@
                     }
 
                     .tital {
-                        padding: 0 20px;
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        text-align: left;
 
-                        .tital_Name {
-                            @include text ($fs-2xl, $fw-3, $lh-48, $c-dark);
-                        }
+                        div {
+                            padding: 0 40px;
 
-                        .titail_desc {
-                            @include text ($fs-l, $fw-3, $lh-24, $c-dark);
+                            .tital_Name {
+                                @include text ($fs-2xl, $fw-3, $lh-48, $c-dark);
+                            }
 
-                        }
+                            .titail_desc {
+                                @include text ($fs-l, $fw-3, $lh-24, $c-dark);
+                                margin: 30px 0
+                            }
 
-                        a {
-                            @include button($fs-l, $fw-4, $lh-29, $c-dark, $bg-yew, 10px, 1px solid, none, $c-white, $c-dark);
+                            a {
+                                @include button($fs-l, $fw-4, $lh-29, $c-dark, $bg-yew, 10px, 1px solid, none, $c-white, $c-dark);
 
+                            }
                         }
                     }
                 }

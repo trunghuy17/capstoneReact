@@ -23,13 +23,17 @@ export default function Home() {
         <div className="carousel-inner">
           <div className="carousel-item active ">
             <div className="row">
-              <div className="col-8">
+              <div className="col-6">
                 <img src={arrProduct[0]?.image} className=" " alt="..." />
               </div>
-              <div className="tital col-4  ">
-                <p className="tital_Name">{arrProduct[0]?.name}</p>
-                <p className="titail_desc">{arrProduct[0]?.shortDescription}</p>
-                <NavLink to={`detail/${arrProduct[0]?.id}`}>Buy now</NavLink>
+              <div className="tital col-6  ">
+                <div>
+                  <p className="tital_Name">{arrProduct[0]?.name}</p>
+                  <p className="titail_desc">
+                    {arrProduct[0]?.shortDescription}
+                  </p>
+                  <NavLink to={`detail/${arrProduct[0]?.id}`}>Buy now</NavLink>
+                </div>
               </div>
             </div>
           </div>
@@ -76,7 +80,7 @@ export default function Home() {
         <div className="row">
           {arrProduct.map((prod, index) => {
             return (
-              <div className="col-3" key={index}>
+              <div className="col-4 mt-3" key={index}>
                 <Product product={prod} />
               </div>
             );

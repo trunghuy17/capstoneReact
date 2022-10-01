@@ -24,6 +24,20 @@
                     img {
                         width: 85px;
                     }
+
+
+
+                }
+
+                .quantity {
+                    button {
+
+                        @include button($fs-l, $fw-4, $lh-29, $c-white, #6200EE, 0px 10px, 1px solid, 5px, $c-white, $c-dark);
+                    }
+
+                    span {
+                        @include text ($fs-m, $fw-4, $lh-24, $c-dark)
+                    }
                 }
             }
         }
@@ -33,7 +47,7 @@
         text-align: right;
 
         button {
-            @include button($fs-l, $fw-4, $lh-29, $c-dark, $bg-yew, 10px, 1px solid, 5px, $c-white, $c-dark);
+            @include button($fs-l, $fw-4, $lh-29, $c-white, #F2994A, 10px, 1px solid, 5px, $c-white, $c-dark);
 
         }
     }

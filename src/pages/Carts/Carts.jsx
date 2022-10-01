@@ -76,7 +76,7 @@ export default function Carts() {
                 </td>
                 <td>{prod.name}</td>
                 <td>{prod.price}</td>
-                <td>
+                <td className="quantity">
                   <button
                     onClick={() => {
                       tangGiamSL(prod.productId, true);
@@ -84,7 +84,7 @@ export default function Carts() {
                   >
                     +
                   </button>
-                  {prod.quantity}
+                  <span>{prod.quantity}</span>
                   <button
                     onClick={() => {
                       tangGiamSL(prod.productId, false);
@@ -94,8 +94,7 @@ export default function Carts() {
                   </button>
                 </td>
                 <td>{prod.price * prod.quantity}</td>
-                <td>
-                  <button className="btn btn-success">Edit</button>
+                <td className="action">
                   <button
                     className="btn btn-danger mx-3"
                     onClick={() => {

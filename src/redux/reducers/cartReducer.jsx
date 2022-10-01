@@ -4,22 +4,7 @@ import { date } from "yup/lib/locale";
 import { getStoreJSON, http, USER_LOGIN } from "../../util/config";
 
 const initialState = {
-  gioHang: [
-    {
-      productId: 1,
-      name: "Adidas Prophere",
-      price: 350,
-      image: "https://shop.cyberlearn.vn/images/adidas-prophere.png",
-      quantity: 1,
-    },
-    {
-      productId: 3,
-      name: "Adidas Prophere Customize",
-      price: 375,
-      image: "https://shop.cyberlearn.vn/images/adidas-prophere-customize.png",
-      quantity: 1,
-    },
-  ],
+  gioHang: [],
   order: {
     orderDetail: [
       {
