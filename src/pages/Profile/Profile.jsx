@@ -40,7 +40,7 @@ export default function Profile(props) {
               {order?.orderDetail.map((item, index) => {
                 return (
                   <tr key={index}>
-                    <td>{item.id}</td>
+                    <td>{order.id}</td>
                     <td>{item.name}</td>
                     <td>
                       <img src={item.image} width={50} alt="..." />

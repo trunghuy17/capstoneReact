@@ -1,17 +1,41 @@
+import { useFormik } from "formik";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { tangGiam } from "../../redux/reducers/cartReducer";
+import {
+  deleteAction,
+  postOrder,
+  postOrderAction,
+  tangGiam,
+} from "../../redux/reducers/cartReducer";
+import { getStore, getStoreJSON, USER_LOGIN } from "../../util/config";
 
 export default function Carts() {
-  const { gioHang } = useSelector((state) => state.cartReducer);
+  const { gioHang, order } = useSelector((state) => state.cartReducer);
   const dispatch = useDispatch();
   const tangGiamSL = (id, bool) => {
-    //đưa lên redux 1 giỏ hàng mới {}
     let value = {
       id,
       bool,
     };
     const action = tangGiam(value);
+    dispatch(action);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    let { email } = getStoreJSON(USER_LOGIN);
+
+    let order = {
+      email: email,
+      orderDetail: gioHang,
+    };
+    console.log({ order });
+    const action = postOrder(order); // truyển data order
+    dispatch(action);
+  };
+  const deleteCart = (id) => {
+    console.log({ id });
+    const action = deleteAction(id);
     dispatch(action);
   };
   return (
@@ -38,9 +62,15 @@ export default function Carts() {
             return (
               <tr key={index}>
                 <td>
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    name="checkbox"
+                    value={true}
+                    id="checkbox"
+                    onClick={() => {}}
+                  />
                 </td>
-                <td>{prod.id}</td>
+                <td>{prod.productId}</td>
                 <td>
                   <img src={prod.image} alt="" />
                 </td>
@@ -49,7 +79,7 @@ export default function Carts() {
                 <td>
                   <button
                     onClick={() => {
-                      tangGiamSL(prod.id, true);
+                      tangGiamSL(prod.productId, true);
                     }}
                   >
                     +
@@ -57,21 +87,31 @@ export default function Carts() {
                   {prod.quantity}
                   <button
                     onClick={() => {
-                      tangGiamSL(prod.id, false);
+                      tangGiamSL(prod.productId, false);
                     }}
                   >
                     -
                   </button>
                 </td>
                 <td>{prod.price * prod.quantity}</td>
-                <td></td>
+                <td>
+                  <button className="btn btn-success">Edit</button>
+                  <button
+                    className="btn btn-danger mx-3"
+                    onClick={() => {
+                      deleteCart(prod.productId);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
             );
           })}
         </tbody>
       </table>
       <div>
-        <button type="submit" className="">
+        <button type="submit" onClick={handleSubmit}>
           SUBMIT ORDER
         </button>
       </div>

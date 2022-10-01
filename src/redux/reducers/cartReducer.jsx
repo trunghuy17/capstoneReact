@@ -1,22 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import { date } from "yup/lib/locale";
+import { getStoreJSON, http, USER_LOGIN } from "../../util/config";
 
 const initialState = {
   gioHang: [
     {
-      id: 1,
+      productId: 1,
       name: "Adidas Prophere",
       price: 350,
       image: "https://shop.cyberlearn.vn/images/adidas-prophere.png",
       quantity: 1,
     },
     {
-      id: 3,
+      productId: 3,
       name: "Adidas Prophere Customize",
       price: 375,
       image: "https://shop.cyberlearn.vn/images/adidas-prophere-customize.png",
       quantity: 1,
     },
   ],
+  order: {
+    orderDetail: [
+      {
+        productId: "",
+        quantity: "",
+      },
+    ],
+    email: "",
+  },
 };
 
 const cartReducer = createSlice({
@@ -31,7 +43,7 @@ const cartReducer = createSlice({
       let { id, bool } = actions.payload;
       console.log({ id, bool });
       console.log("id:", { ...state.gioHang[id] });
-      let index = state.gioHang.findIndex((sp) => sp.id === id);
+      let index = state.gioHang.findIndex((sp) => sp.productId === id);
       if (bool) {
         state.gioHang[index].quantity += 1;
       } else if (state.gioHang[index].quantity > 1) {
@@ -42,13 +54,15 @@ const cartReducer = createSlice({
       // payload trả về 1 obj product detail
       let newProduct = actions.payload;
       let spGioHang = {
-        id: newProduct.id,
+        productId: newProduct.id,
         name: newProduct.name,
         price: newProduct.price,
         image: newProduct.image,
         quantity: 1,
       };
-      let index = state.gioHang.findIndex((sp) => sp.id === spGioHang.id);
+      let index = state.gioHang.findIndex(
+        (sp) => sp.productId === spGioHang.productId
+      );
       console.log({ index });
       if (index !== -1) {
         state.gioHang[index].quantity += 1;
@@ -56,9 +70,44 @@ const cartReducer = createSlice({
         state.gioHang.push(spGioHang);
       }
     },
+    postOrderAction: (state, actions) => {
+      let data = actions.payload;
+      console.log({ data });
+      //   data.prod;
+    },
+    deleteAction: (state, action) => {
+      // let { id } = ;
+      let id = action.payload;
+      console.log({ action });
+      let index = state.gioHang.findIndex((gh) => gh.productId === id);
+      console.log({ index });
+      if (index !== -1) {
+        state.gioHang.splice(index, 1);
+      }
+      console.log(state.gioHang);
+    },
   },
 });
 
-export const { tangGiam, tongSL, addGiohang } = cartReducer.actions;
+export const { tangGiam, tongSL, addGiohang, postOrderAction, deleteAction } =
+  cartReducer.actions;
 
 export default cartReducer.reducer;
+
+// call api post order
+export const postOrder = (value) => {
+  console.log({ value });
+  return async (dispatch) => {
+    try {
+      let result = await axios({
+        url: "https://shop.cyberlearn.vn/api/Users/order",
+        method: "POST",
+        data: value,
+      });
+      console.log(result.data.content);
+      const action = postOrderAction();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
