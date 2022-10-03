@@ -8,9 +8,7 @@ import moment from "moment";
 import { useFormik } from "formik";
 import { ACCESS_TOKEN, getStore } from "../../util/config";
 export default function Profile(props) {
-  // const { userUpdate, setUserUpdate } = useState("");
   const { userLogin } = useSelector((state) => state.userReducer);
-  const { userUpdate } = useState("");
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,11 +18,11 @@ export default function Profile(props) {
   const renderOrderHistory = () => {
     return userLogin?.ordersHistory?.map((order, index) => {
       return (
-        <div className="orderDetail" key={index}>
-          <h3>
+        <div className="orderDetail mt-2" key={index}>
+          <h4>
             + Orders have been placed on{" "}
             {moment(order?.date).format("DD/MM/YYYY hh:mm:ss A")}
-          </h3>
+          </h4>
           <table className="table">
             <thead>
               <tr>
@@ -57,23 +55,31 @@ export default function Profile(props) {
       );
     });
   };
-  const handleChange = (e) => {
-    let { id, value } = e.target.value;
-    // userUpdate[id] = value;
-    console.log("userUpdate:", value);
-  };
-  const hanndleSubmit = (e) => {
-    e.preventDefault();
-  };
+
+  const formik = useFormik({
+    initialValues: {
+      password: "",
+      phone: "",
+      gender: "",
+      name: "",
+    },
+    onSubmit(value) {
+      value.eamil = userLogin.email;
+      const action = updateProfileApi(value);
+      dispatch(action);
+    },
+  });
   return (
-    <div className="container profile">
+    <div className="container-sm  profile">
       <h3>Profile</h3>
       <div className="row">
-        <img src={userLogin?.avatar} alt="..." className="col-3" />
+        <div className="col-xs-12 col-lg-3">
+          <img src={userLogin?.avatar} alt="..." />
+        </div>
 
-        <form className="col-9" onSubmit={hanndleSubmit}>
+        <form className="col-lg-9" onSubmit={formik.handleSubmit}>
           <div className="row">
-            <div className="col-6">
+            <div className="col-lg-6">
               <div className="form-group">
                 <p>Email</p>
                 <input
@@ -81,8 +87,8 @@ export default function Profile(props) {
                   name="email"
                   id="email"
                   className="form-control"
-                  // value={userLogin.email}
-                  onChange={handleChange}
+                  value={userLogin?.email}
+                  onChange={formik.handleChange}
                 />
               </div>
               <div className="form-group">
@@ -92,12 +98,11 @@ export default function Profile(props) {
                   name="phone"
                   id="phone"
                   className="form-control"
-                  // value={userLogin.phone}
-                  onChange={handleChange}
+                  onChange={formik.handleChange}
                 />
               </div>
             </div>
-            <div className="col-6">
+            <div className="col-lg-6">
               <div className="form-group">
                 <p>Name</p>
                 <input
@@ -105,8 +110,7 @@ export default function Profile(props) {
                   name="name"
                   id="name"
                   className="form-control"
-                  // value={userLogin.name}
-                  onChange={handleChange}
+                  onChange={formik.handleChange}
                 />
               </div>
               <div className="form-group">
@@ -116,44 +120,43 @@ export default function Profile(props) {
                   name="password"
                   id="password"
                   className="form-control"
-                  // value={userLogin.password}
-                  onChange={handleChange}
+                  onChange={formik.handleChange}
                 />
               </div>
+              <div className="form-group row">
+                <p className="col">Gender</p>
+                <div className="col text-center">
+                  <input
+                    type="radio"
+                    name="gender"
+                    id="male"
+                    value="true"
+                    onChange={formik.handleChange}
+                  />
+                  <p>Male</p>
+                </div>
+                <div className="col text-center">
+                  <input
+                    type="radio"
+                    name="gender"
+                    id="femail"
+                    value="false"
+                    onChange={formik.handleChange}
+                  />
+                  <p>Femail</p>
+                </div>
+                <button type="submit" className="col mt-2">
+                  Update
+                </button>
+              </div>
             </div>
-          </div>
-          <div className="form-group row">
-            <p className="col">Gender</p>
-            <div className="col">
-              <input
-                type="radio"
-                name="gender"
-                id="male"
-                value="true"
-                onChange={handleChange}
-              />
-              <p>Male</p>
-            </div>
-            <div className="col">
-              <input
-                type="radio"
-                name="gender"
-                id="femail"
-                value="false"
-                onChange={handleChange}
-              />
-              <p>Femail</p>
-            </div>
-            <button type="submit" className="col mt-2">
-              Update
-            </button>
           </div>
         </form>
       </div>
       <hr />
       <div className="">
         <button className="btn btn-dark text-light">Order history</button>
-        <button className="btn btn-success ">Favourite</button>
+        <button className="btn btn-success  mx-2">Favourite</button>
       </div>
 
       {renderOrderHistory()}

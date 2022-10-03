@@ -28,8 +28,8 @@ root.render(
   <Provider store={store}>
     <HistoryRouter history={history}>
       <Routes>
-        <Route path='' element={<HomeTemplate />}>
-          <Route index element={<ResponsiveItem component={Home} />}></Route>
+        <Route path='' element={<ResponsiveItem component={HomeTemplate} componentMobile={HomeTemplateMobile} />}>
+          <Route index element={<ResponsiveItem component={Home} componentMobile={HomeMobile} />}></Route>
           <Route path='login' element={<Login />}></Route>
           <Route path='carts' element={<Carts />}></Route>
           <Route path='search' element={<Search />}></Route>

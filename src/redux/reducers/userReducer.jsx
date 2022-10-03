@@ -13,13 +13,6 @@ import {
 const initialState = {
   userLogin: getStoreJSON(USER_LOGIN),
   toKen: "",
-  userUpdate: {
-    email: "",
-    password: "",
-    phone: "",
-    name: "",
-    gender: "",
-  },
 };
 
 const userReducer = createSlice({
@@ -32,7 +25,7 @@ const userReducer = createSlice({
     },
     setUserUpdateAction: (state, action) => {
       let userUpdate = action.payload;
-      state.userUpdate = userUpdate;
+      state.userLogin = userUpdate;
     },
   },
 });
@@ -43,8 +36,8 @@ export default userReducer.reducer;
 
 /*-------action api thunk--------- */
 export const signinApi = (userLogin) => {
-  try {
-    return async (dispatch) => {
+  return async (dispatch) => {
+    try {
       let result = await axios({
         url: "https://shop.cyberlearn.vn/api/Users/signin",
         method: "POST",
@@ -61,11 +54,12 @@ export const signinApi = (userLogin) => {
       dispatch(action);
 
       history.push("/profile");
-    };
-  } catch (err) {
-    console.log(err);
-    history.push("/login");
-  }
+    } catch (err) {
+      alert("Tài khoản hoặc mật khẩu không đúng ! Vui lòng nhập lại !");
+      console.log(err);
+      history.push("/login");
+    }
+  };
 };
 
 // api facebooksigin
@@ -81,7 +75,7 @@ export const facebookLoginAPi = (toKen) => {
       });
       console.log(result.data.content);
       setStore(ACCESS_TOKEN, result.data.content.accessToken);
-      setStoreJSON("facebookLogin", result.data.content);
+      setStoreJSON(USER_LOGIN, result.data.content);
       const action = setUserLoginAction(result.data.content);
       dispatch(action);
       // Chuyển hướng trang tới /profile
@@ -124,14 +118,32 @@ export const updateProfileApi = (userUpdate) => {
         method: "POST",
         data: userUpdate,
         headers: {
-          // Authorization: `Bearer`
           Authorization: `Bearer ${getStore(ACCESS_TOKEN)}`,
         },
       });
-      console.log("update:", result.data.content);
-      // const action = setUserUpdateAction
+      console.log("update:", result);
+      const action = setUserLoginAction(userUpdate);
+      dispatch(action);
     } catch (error) {
       console.log(error);
+    }
+  };
+};
+
+export const signupApi = (userRegister) => {
+  return async (dispatch) => {
+    try {
+      let result = await axios({
+        url: "https://shop.cyberlearn.vn/api/Users/signup",
+        method: "POST",
+        data: userRegister,
+      });
+      console.log(result.data.content);
+      alert("Đăng ký thành công!");
+      history.push("/login");
+    } catch (error) {
+      alert(error.response.data.message);
+      console.log({ error });
     }
   };
 };

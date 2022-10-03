@@ -1,0 +1,40 @@
+.regitster {
+    padding: 60px 0px;
+
+    .container {
+
+        h1 {
+            text-align: center;
+            @include text ($fs-2xl, $fw-4, $lh-48, $c-dark);
+        }
+
+        form {
+
+            .row {
+                .col-6 {
+                    div {
+                        padding: 10px 0;
+
+                        p {}
+
+                        input {}
+
+
+                    }
+
+                    .gender {
+                        align-items: center;
+                    }
+
+                    button {
+                        @include button ($fs-xl, $fw-4, $lh-36, $c-white, $bg-pupble-ae, 10px 50px, 1px solid, none, $bg-pupble-ae, $c-white );
+
+                    }
+                }
+
+            }
+
+
+        }
+    }
+}

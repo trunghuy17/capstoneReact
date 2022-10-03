@@ -17,7 +17,7 @@ export default function ResponsiveItem(props) {
       window.removeEventListener("resize", handleOnResize);
     };
   }, []);
-  if (screen.width < 768 && props.componentMobile) {
+  if (screen.width <= 768 && props.componentMobile) {
     // Load component mobile
     return <props.componentMobile />;
   }

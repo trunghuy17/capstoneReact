@@ -1,7 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { date } from "yup/lib/locale";
-import { getStoreJSON, http, USER_LOGIN } from "../../util/config";
+import { history } from "../..";
+import {
+  getStore,
+  getStoreJSON,
+  http,
+  setStoreJSON,
+  USER_LOGIN,
+} from "../../util/config";
 
 const initialState = {
   gioHang: [],
@@ -26,8 +33,6 @@ const cartReducer = createSlice({
     },
     tangGiam: (state, actions) => {
       let { id, bool } = actions.payload;
-      console.log({ id, bool });
-      console.log("id:", { ...state.gioHang[id] });
       let index = state.gioHang.findIndex((sp) => sp.productId === id);
       if (bool) {
         state.gioHang[index].quantity += 1;
@@ -48,7 +53,6 @@ const cartReducer = createSlice({
       let index = state.gioHang.findIndex(
         (sp) => sp.productId === spGioHang.productId
       );
-      console.log({ index });
       if (index !== -1) {
         state.gioHang[index].quantity += 1;
       } else {
@@ -58,7 +62,7 @@ const cartReducer = createSlice({
     postOrderAction: (state, actions) => {
       let data = actions.payload;
       console.log({ data });
-      //   data.prod;
+      state.gioHang.splice(data, 1);
     },
     deleteAction: (state, action) => {
       // let { id } = ;
@@ -81,7 +85,6 @@ export default cartReducer.reducer;
 
 // call api post order
 export const postOrder = (value) => {
-  console.log({ value });
   return async (dispatch) => {
     try {
       let result = await axios({
@@ -90,7 +93,10 @@ export const postOrder = (value) => {
         data: value,
       });
       console.log(result.data.content);
-      const action = postOrderAction();
+      alert(result.data.content);
+      const action = postOrderAction(value);
+      dispatch(action);
+      history.push("/");
     } catch (error) {
       console.log(error);
     }

@@ -11,6 +11,7 @@ import { getStore, getStoreJSON, USER_LOGIN } from "../../util/config";
 
 export default function Carts() {
   const { gioHang, order } = useSelector((state) => state.cartReducer);
+  console.log({ gioHang });
   const dispatch = useDispatch();
   const tangGiamSL = (id, bool) => {
     let value = {
@@ -29,7 +30,6 @@ export default function Carts() {
       email: email,
       orderDetail: gioHang,
     };
-    console.log({ order });
     const action = postOrder(order); // truyển data order
     dispatch(action);
   };

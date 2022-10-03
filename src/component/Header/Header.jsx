@@ -18,7 +18,7 @@ export default function Header(props) {
   };
   const tongSoLuong = () => {
     console.log({ gioHang });
-    return gioHang.reduce((tsl, sp, index) => {
+    return gioHang?.reduce((tsl, sp, index) => {
       return (tsl += sp.quantity);
     }, 0);
   };

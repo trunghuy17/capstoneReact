@@ -13,6 +13,7 @@
 
 
             img {
+                max-width: 100%;
                 transition: transform 0.3s;
 
                 &:hover {
@@ -22,6 +23,10 @@
         }
 
         .product_title {
+            @media screen and(max-width: 576px) {
+                padding: 0px 25px;
+            }
+
             h1 {
                 @include text($fs-xl, $fw-3, $lh-36, $c-dark);
             }
@@ -36,7 +41,7 @@
 
             #btn {
                 button {
-                    margin-right: 20px;
+                    margin: 10px;
                     @include button($fs-l,
                         $fw-6,
                         $lh-29,
@@ -97,5 +102,7 @@
             @include text ($fs-2xl, $fw-4, $lh-48, $c-dark);
             text-align: center;
         }
+
+        div {}
     }
 }

@@ -95,14 +95,9 @@ export default function Login(props) {
           <div className="facebook">
             <FacebookLogin
               appId="1972667653124048"
-              // autoLoad={true}
               fields="name,email,picture"
               callback={responseFacebook}
             />
-            {/* <button type="button">
-              <i className="fab fa-facebook"></i>
-              <span>Continue with Facebook</span>
-            </button> */}
           </div>
         </div>
       </form>

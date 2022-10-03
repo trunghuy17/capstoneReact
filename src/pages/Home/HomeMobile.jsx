@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Product from "../../component/Product/Product";
 import { getProductApi } from "../../redux/reducers/productReducer";
 
 import { NavLink } from "react-router-dom";
+import ProductMobile from "../../component/Product/ProductMobile";
 export default function HomeMobile() {
   // Lấy dữ liều từ redux
   const { arrProduct } = useSelector((state) => state.productReducer);
@@ -16,14 +16,7 @@ export default function HomeMobile() {
     return arrProduct.map((prod, index) => {
       return (
         <div className="d-flex mt-2" key={index}>
-          <img src={prod.image} alt="..." className="w-25" />
-          <div className="w-75">
-            <h3>{prod.name}</h3>
-            <p>{prod.description}</p>
-            <NavLink to={`/detail/${prod.id}`} className="btn btn-dark">
-              Detail
-            </NavLink>
-          </div>
+          <ProductMobile product={prod} />
         </div>
       );
     });

@@ -8,7 +8,6 @@ export default function Home() {
   // Lấy dữ liều từ redux
   const { arrProduct } = useSelector((state) => state.productReducer);
   const dispatch = useDispatch();
-  console.log({ arrProduct });
   useEffect(() => {
     const action = getProductApi();
     dispatch(action);
@@ -23,31 +22,33 @@ export default function Home() {
         <div className="carousel-inner">
           <div className="carousel-item active ">
             <div className="row">
-              <div className="col-6">
-                <img src={arrProduct[0]?.image} className=" " alt="..." />
+              <div className="col-8 product_img">
+                <img src={arrProduct[18]?.image} className=" " alt="..." />
               </div>
-              <div className="tital col-6  ">
+              <div className="tital col-4  ">
                 <div>
-                  <p className="tital_Name">{arrProduct[0]?.name}</p>
+                  <p className="tital_Name">{arrProduct[18]?.name}</p>
                   <p className="titail_desc">
-                    {arrProduct[0]?.shortDescription}
+                    {arrProduct[18]?.shortDescription}
                   </p>
-                  <NavLink to={`detail/${arrProduct[0]?.id}`}>Buy now</NavLink>
+                  <NavLink to={`detail/${arrProduct[18]?.id}`}>Buy now</NavLink>
                 </div>
               </div>
             </div>
           </div>
           {arrProduct?.map((prod, index) => {
             return (
-              <div className="carousel-item  " key={index}>
+              <div className="carousel-item" key={index}>
                 <div className="row">
-                  <div className="col-8">
+                  <div className="col-8 product_img">
                     <img src={prod?.image} className=" " alt="..." />
                   </div>
                   <div className="tital col-4  ">
-                    <p className="tital_Name">{prod?.name}</p>
-                    <p className="titail_desc">{prod?.shortDescription}</p>
-                    <NavLink to={`detail/${prod.id}`}>Buy now</NavLink>
+                    <div>
+                      <p className="tital_Name">{prod?.name}</p>
+                      <p className="titail_desc">{prod?.shortDescription}</p>
+                      <NavLink to={`detail/${prod.id}`}>Buy now</NavLink>
+                    </div>
                   </div>
                 </div>
               </div>

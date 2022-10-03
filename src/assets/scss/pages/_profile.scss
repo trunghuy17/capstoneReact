@@ -1,0 +1,66 @@
+.profile {
+    @media screen and(max-width:374px) {
+        .profile {
+            min-width: 350px;
+        }
+    }
+
+    padding: 60px 0;
+
+    h3 {
+        width: 30%;
+        padding: 5px 0px 5px 34px;
+        background: linear-gradient(180deg, #F21299 0%, #1B02B5 100%);
+        @include text ($fs-2xl, $fw-4, $lh-48, $c-white);
+
+        // text-align: center;
+        @media screen and (max-width:578px) {
+            width: 100%;
+        }
+    }
+
+    .row {
+
+
+        .col-lg-3 {
+            text-align: center;
+
+            img {
+                width: 225px;
+                height: 225px;
+                border-radius: 50%;
+            }
+
+            @media screen and (max-width:578px) {
+                max-width: 100%;
+            }
+        }
+
+        form {
+            @media screen and (max-width:578px) {
+                // display: none;
+                padding: 0 25px;
+            }
+
+            .row {
+                .col-lg-6 {
+                    .row {
+                        button {
+                            @include button($fs-l,
+                                $fw-6,
+                                $lh-29,
+                                $c-white,
+                                #6200EE,
+                                10px,
+                                none,
+                                10px,
+                                $bg-gray-c,
+                                $c-dark );
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}

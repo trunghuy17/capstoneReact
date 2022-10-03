@@ -15,19 +15,15 @@ export default function Search() {
   const { arrProduct } = useSelector((state) => state.searchProductReducer);
   const typingTimeoutRef = useRef(null);
 
-  useEffect(
-    () => {
-      if (typingTimeoutRef.current) {
-        clearTimeout(typingTimeoutRef.current);
-      }
-      typingTimeoutRef.current = setTimeout(() => {
-        const action = getProductByKeywordApi(searchParams);
-        dispatch(action);
-      }, 500);
-    },
-    [searchParams.get("keyword")],
-    []
-  );
+  useEffect(() => {
+    if (typingTimeoutRef.current) {
+      clearTimeout(typingTimeoutRef.current);
+    }
+    typingTimeoutRef.current = setTimeout(() => {
+      const action = getProductByKeywordApi(searchParams);
+      dispatch(action);
+    }, 500);
+  }, [searchParams.get("keyword")]);
   const handleChange = (e) => {
     if (typingTimeoutRef.current) {
       clearTimeout(typingTimeoutRef.current);
@@ -88,7 +84,7 @@ export default function Search() {
       <div className="row">
         {arrProduct?.map((prod, index) => {
           return (
-            <div className="col-sm-6 col-lg-3 mt-4" key={index}>
+            <div className="col-sm-6 col-lg-4 mt-4" key={index}>
               <Product product={prod} />
             </div>
           );
