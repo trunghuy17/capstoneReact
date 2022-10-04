@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { facebookLoginAPi, signinApi } from "../../redux/reducers/userReducer";
-import FacebookLogin from "react-facebook-login";
+// import FacebookLogin from "react-facebook-login";
 export default function Login(props) {
   const responseFacebook = (response) => {
     console.log(response);
@@ -93,11 +93,11 @@ export default function Login(props) {
             <button type="submit"> LOGIN</button>
           </div>
           <div className="facebook">
-            <FacebookLogin
+            {/* <FacebookLogin
               appId="1972667653124048"
               fields="name,email,picture"
               callback={responseFacebook}
-            />
+            /> */}
           </div>
         </div>
       </form>
