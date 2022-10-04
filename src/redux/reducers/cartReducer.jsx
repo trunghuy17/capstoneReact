@@ -60,9 +60,7 @@ const cartReducer = createSlice({
       }
     },
     postOrderAction: (state, actions) => {
-      let data = actions.payload;
-      console.log({ data });
-      state.gioHang.splice(data, 1);
+      state.gioHang = [];
     },
     deleteAction: (state, action) => {
       // let { id } = ;
